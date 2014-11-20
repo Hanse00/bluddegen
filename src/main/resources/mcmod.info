@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "bluddegen",
+    "name": "BluddeGen",
+    "description": "A special worldgen mod for Bludde.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["Hanse00"],
+    "credits": "Bludde",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
