@@ -27,7 +27,18 @@ public class BluddeGenerator implements IWorldGenerator {
 	}
 
 	private void generateNether(World world, Random random, int xCoord, int zCoord) {
-		//TODO: Clean up the mess here
+		setWorld(world, xCoord, zCoord, Blocks.lava, 0, 2);
+	}
+
+	private void generateEnd(World world, Random random, int xCoord, int zCoord) {
+		setWorld(world, xCoord, zCoord, Blocks.obsidian);
+	}
+
+	private void setWorld(World world, int xCoord, int zCoord, Block block) {
+		setWorld(world, xCoord, zCoord, block, 0, 3);
+	}
+
+	private void setWorld(World world, int xCoord, int zCoord, Block block, int metadata, int flag) {
 		for (int i = 1; i <= 16; i++) {
 			for (int j = 1; j <= 16; j++) {
 				for (int k = 1; k <= world.getActualHeight(); k++) {
@@ -35,16 +46,12 @@ public class BluddeGenerator implements IWorldGenerator {
 					int zCoordinate = zCoord + j;
 					int yCoordinate = k;
 
-					Block block = world.getBlock(xCoordinate, yCoordinate, zCoordinate);
-					if (block.getMaterial() == Material.air) {
-						world.setBlock(xCoordinate, yCoordinate, zCoordinate, Blocks.lava, 0, 2);
+					Block blockAtLocation = world.getBlock(xCoordinate, yCoordinate, zCoordinate);
+					if (blockAtLocation.getMaterial() == Material.air) {
+						world.setBlock(xCoordinate, yCoordinate, zCoordinate, block, metadata, flag);
 					}
 				}
 			}
 		}
-	}
-
-	private void generateEnd(World world, Random random, int i, int j) {
-		//TODO: Alternate world generation for the end world
 	}
 }
