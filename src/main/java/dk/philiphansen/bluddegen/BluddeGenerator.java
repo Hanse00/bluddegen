@@ -47,24 +47,24 @@ public class BluddeGenerator implements IWorldGenerator {
 
 	private void setChunk(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag) {
 		for (int x = 1; x <= 16; x++) {
-			genXAxis(world, chunkStartX, chunkStartZ, block, metadata, flag, x);
+			genZAxis(world, chunkStartX, chunkStartZ, block, metadata, flag, x);
 		}
 	}
 
-	private void genXAxis(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag, int x) {
+	private void genZAxis(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag, int x) {
 		for (int z = 1; z <= 16; z++) {
-			genZAxis(world, chunkStartX, chunkStartZ, block, metadata, flag, x, z);
-		}
-	}
-
-	private void genZAxis(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag, int x,
-	                      int z) {
-		for (int y = 1; y <= world.getActualHeight(); y++) {
-			genYAxis(world, chunkStartX, chunkStartZ, block, metadata, flag, x, z, y);
+			genYAxis(world, chunkStartX, chunkStartZ, block, metadata, flag, x, z);
 		}
 	}
 
 	private void genYAxis(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag, int x,
+	                      int z) {
+		for (int y = 1; y <= world.getActualHeight(); y++) {
+			genBlock(world, chunkStartX, chunkStartZ, block, metadata, flag, x, z, y);
+		}
+	}
+
+	private void genBlock(World world, int chunkStartX, int chunkStartZ, Block block, int metadata, int flag, int x,
 	                      int z, int y) {
 		int xCoord = chunkStartX + x;
 		int zCoord = chunkStartZ + z;
